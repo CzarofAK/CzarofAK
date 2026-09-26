@@ -14,7 +14,7 @@ flowchart LR
     DSP["smartebl_display_esphome<br/>Display ESP32-P4 10.1 inch"]
     DIAL["m5dial_fram<br/>M5Dial cockpit"]
     HVAC["sprinter_hvac_control<br/>Blower on leisure battery"]
-    OLD["smartebl_display<br/>Nextion, legacy"]
+    OLD["smartebl_display_nextion<br/>Nextion, legacy"]
   end
 
   subgraph COMP["ESPHome components"]
@@ -27,7 +27,7 @@ flowchart LR
 
   EBL <-->|RS232 protocol| DSP
   PPI -->|external_components| DSP
-  PFW -.->|planned| DSP
+  PFW -->|external_components| DSP
   DIAL -.->|design_rules.md| DSP
   OLD -.->|UX reference| DSP
 
@@ -49,7 +49,7 @@ Solid = technical dependency, dashed = documentation / design reference.
 | [smartebl_display_esphome](https://github.com/CzarofAK/smartebl_display_esphome) | Waveshare ESP32-P4 + 10.1" DSI | Main display, LVGL touch UI | active |
 | [m5dial_fram](https://github.com/CzarofAK/m5dial_fram) | M5Stack Dial | Cockpit controls, pages as packages | active |
 | [sprinter_hvac_control](https://github.com/CzarofAK/sprinter_hvac_control) | ESP32 Relay 30A X2 + Cytron MD30C | OEM blower on leisure battery, terminal 15R interlock | active |
-| [smartebl_display](https://github.com/CzarofAK/smartebl_display) | ESP32 + Nextion 7" | Previous-generation display | legacy, archived |
+| [smartebl_display_nextion](https://github.com/CzarofAK/smartebl_display_nextion) | ESP32 + Nextion 7" | Previous-generation display, replaced by smartebl_display_esphome | legacy, archived |
 
 ## ESPHome components
 
@@ -59,7 +59,7 @@ Pulled in via `external_components:`. Production devices always pin a tag, never
 |---|---|---|---|---|
 | [panel_power_init](https://github.com/CzarofAK/panel_power_init) | `panel_power_init` | Wakes the panel PMIC (I2C 0x45) before `mipi_dsi` setup | smartebl_display_esphome | in production |
 | [m5dial_clock_sbb](https://github.com/CzarofAK/m5dial_clock_sbb) | `sbb_clock` | Swiss railway clock as an LVGL widget | – | available |
-| [power_flow_widget](https://github.com/CzarofAK/power_flow_widget) | `power_flow_box` | Victron-style power-flow box | – (migration planned) | v0.1, untested |
+| [power_flow_widget](https://github.com/CzarofAK/power_flow_widget) | `power_flow_box` | Victron-style power-flow box | smartebl_display_esphome | in production |
 
 ```yaml
 external_components:
