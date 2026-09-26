@@ -19,7 +19,7 @@ flowchart LR
 
   subgraph COMP["ESPHome components"]
     PPI["panel_power_init<br/>Waveshare 10.1-DSI-TOUCH-A"]
-    SBB["m5dial_clock_sbb<br/>any LVGL display<br/><i>currently unused</i>"]
+    SBB["m5dial_clock_sbb<br/>any LVGL display"]
     PFW["power_flow_widget<br/>any LVGL display"]
   end
 
@@ -28,6 +28,7 @@ flowchart LR
   EBL <-->|RS232 protocol| DSP
   PPI -->|external_components| DSP
   PFW -->|external_components| DSP
+  SBB -->|external_components| DIAL
   DIAL -.->|design_rules.md| DSP
   OLD -.->|UX reference| DSP
 
@@ -58,7 +59,7 @@ Pulled in via `external_components:`. Production devices always pin a tag, never
 | Repo | Component | Purpose | Used by | Status |
 |---|---|---|---|---|
 | [panel_power_init](https://github.com/CzarofAK/panel_power_init) | `panel_power_init` | Wakes the panel PMIC (I2C 0x45) before `mipi_dsi` setup | smartebl_display_esphome | in production |
-| [m5dial_clock_sbb](https://github.com/CzarofAK/m5dial_clock_sbb) | `sbb_clock` | Swiss railway clock as an LVGL widget | – | available |
+| [m5dial_clock_sbb](https://github.com/CzarofAK/m5dial_clock_sbb) | `sbb_clock` | Swiss railway clock as an LVGL widget | m5dial_fram | in production |
 | [power_flow_widget](https://github.com/CzarofAK/power_flow_widget) | `power_flow_box` | Victron-style power-flow box | smartebl_display_esphome | in production |
 
 ```yaml
