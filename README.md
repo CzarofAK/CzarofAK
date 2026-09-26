@@ -10,17 +10,17 @@ Every device integrates with Home Assistant, but is built so its core functions 
 ```mermaid
 flowchart LR
   subgraph DEV["Device firmware"]
-    EBL["smartebl<br/>Main unit ESP32-WROVER"]
-    DSP["smartebl_display_esphome<br/>Display ESP32-P4 10.1 inch"]
-    DIAL["m5dial_fram<br/>M5Dial cockpit"]
-    HVAC["sprinter_hvac_control<br/>Blower on leisure battery"]
-    OLD["smartebl_display_nextion<br/>Nextion, legacy"]
+    EBL["smartebl<br/>ESP32-WROVER-IE, SmartEBL board"]
+    DSP["smartebl_display_esphome<br/>ESP32-P4 + Waveshare 10.1 inch DSI"]
+    DIAL["m5dial_fram<br/>M5Stack Dial"]
+    HVAC["sprinter_hvac_control<br/>ESP32 Relay 30A X2 + Cytron MD30C"]
+    OLD["smartebl_display_nextion<br/>ESP32 + Nextion 7 inch<br/><i>archived</i>"]
   end
 
   subgraph COMP["ESPHome components"]
-    PPI["panel_power_init"]
-    SBB["m5dial_clock_sbb"]
-    PFW["power_flow_widget"]
+    PPI["panel_power_init<br/>Waveshare 10.1-DSI-TOUCH-A"]
+    SBB["m5dial_clock_sbb<br/>any LVGL display<br/><i>currently unused</i>"]
+    PFW["power_flow_widget<br/>any LVGL display"]
   end
 
   HA(("Home Assistant"))
@@ -37,7 +37,7 @@ flowchart LR
   HA -->|Entities| DSP
 ```
 
-Solid = technical dependency, dashed = documentation / design reference.
+Each box: repository name, target hardware, remarks. Solid = technical dependency, dashed = documentation / design reference.
 
 ---
 
