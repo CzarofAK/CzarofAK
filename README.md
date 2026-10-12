@@ -110,3 +110,8 @@ Git cannot see these dependencies. Changing one means updating every consumer.
 - Before every flash: `esphome config <device>.yaml`.
 - Component repos are tagged (`vMAJOR.MINOR.PATCH`); devices reference tags.
 - Topics: `fram` and `esphome` on every repo; plus `esphome-component` or `smartebl` where applicable.
+
+---
+
+> [!NOTE]
+> All repositories here are **private hobby projects**, published free of charge and **used at your own risk**. Several of them switch 12 V high-current loads, control gas heaters or access vehicle electronics – see [DISCLAIMER.md](DISCLAIMER.md) (EN/DE) and the warning in each repository.
